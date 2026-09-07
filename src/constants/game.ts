@@ -5,6 +5,6 @@ export const GRID_SIZE = 15;
 export const COLOR_MAP: Record<Color, string> = {
     BLUE: "blue",
     RED: "red",
-    GREEN: "green",
     YELLOW: "yellow",
+    GREEN: "green",
 };
