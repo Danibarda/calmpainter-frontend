@@ -10,3 +10,7 @@
 .cell:hover {
     transform: none;
 }
+
+.game-grid {
+    width: fit-content;
+}
