@@ -1,3 +1,5 @@
+import './Timer.css'
+
 type TimerProps = {
     secondsLeft: number
 }
@@ -5,8 +7,8 @@ type TimerProps = {
 function Timer({ secondsLeft }: TimerProps) {
     return (
         <div>
-            <label>Time Left</label>
-            <label>{secondsLeft}</label>
+            <label className="text">Time Left</label>
+            <label className="time">{secondsLeft}</label>
         </div>
     )
 }

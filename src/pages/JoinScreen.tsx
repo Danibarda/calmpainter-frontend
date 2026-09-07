@@ -12,7 +12,7 @@ const testPlayers: Player[] = [
 
 function JoinScreen() {
     return (
-        <div className="container">
+        <div className="container join">
 
             <h1>Calm Painter</h1>
 

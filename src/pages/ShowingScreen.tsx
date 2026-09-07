@@ -19,16 +19,18 @@ function ShowingScreen() {
     }, [secondsLeft]);
 
     return (
-        <div className="container">
+        <div className="container show">
             <div className="timer">
                 <Timer secondsLeft={secondsLeft} />
             </div>
 
-            <h1>Picture to Draw</h1>
+            <div className="pictureToDraw">
+                <h1>Picture to Draw</h1>
+                <div className="grid">
 
-            <div className="grid">
-
+                </div>
             </div>
+
         </div>
     )
 }

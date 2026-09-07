@@ -1,0 +1,13 @@
+.text {
+  margin: 5px;
+  padding: 5px 15px;
+}
+.time {
+  padding: 0px 10px;
+}
+
+label {
+  border: 2px solid rgb(255, 7, 193);
+  background-color: rgb(255, 188, 246);
+  border-radius: 10px;
+}
