@@ -1,4 +1,14 @@
 import './JoinScreen.css'
+import PlayerList from '../components/PlayerList'
+import type { Player } from '../types/Player';
+
+
+const testPlayers: Player[] = [
+    { id: "1", name: "Dali", color: "RED"},
+    { id: "2", name: "van Gogh", color: "BLUE"},
+    { id: "3", name: "Monet", color: "GREEN"},
+    { id: "4", name: "Picasso", color: "YELLOW"},
+];
 
 function JoinScreen() {
     return (
@@ -15,12 +25,7 @@ function JoinScreen() {
             <div className="players">
                 <div className="playerList">
                     <label>Players: 4/4</label>
-                    <ul>
-                        <li><span className="dot red"></span> Dali</li>
-                        <li><span className="dot blue"></span> van Gogh</li>
-                        <li><span className="dot green"></span> Monet</li>
-                        <li><span className="dot yellow"></span> Picasso</li>
-                    </ul>
+                 <PlayerList players={testPlayers}/>
                 </div>
                 <button>Start Game</button>
             </div>
