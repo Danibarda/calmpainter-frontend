@@ -1,15 +1,14 @@
-.show {
+.draw {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.showTimer {
+.drawTimer {
   align-self: flex-start;
   margin: 5%;
 }
 
-.pictureToDraw h1 {
+.drawing h1 {
   font-size: 30px;
 }
-

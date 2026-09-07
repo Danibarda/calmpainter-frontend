@@ -1,4 +1,5 @@
 import type { Player } from "../types/Player";
+import './PlayerList.css';
 
 interface PlayerListProps {
     players: Player[];

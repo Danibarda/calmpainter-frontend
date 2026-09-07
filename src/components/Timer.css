@@ -6,7 +6,7 @@
   padding: 0px 10px;
 }
 
-label {
+.timerContainer label {
   border: 2px solid rgb(255, 7, 193);
   background-color: rgb(255, 188, 246);
   border-radius: 10px;

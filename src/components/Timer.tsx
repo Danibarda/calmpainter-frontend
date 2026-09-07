@@ -6,7 +6,7 @@ type TimerProps = {
 
 function Timer({ secondsLeft }: TimerProps) {
     return (
-        <div>
+        <div className="timerContainer">
             <label className="text">Time Left</label>
             <label className="time">{secondsLeft}</label>
         </div>
