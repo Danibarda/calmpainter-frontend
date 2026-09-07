@@ -1,17 +1,8 @@
-.container {
-  background-color: turquoise;
+.join {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto;
-  border-radius: 16px;
-  gap: 40px;
-  height: 90vh;
-  font-size: 25px;
-  box-shadow: 1px 1px 5px rgb(17, 17, 17);
 }
 
 .userInput {
@@ -36,7 +27,7 @@
   margin-bottom: 4%;
 }
 
-h1 {
+.join h1 {
   border: solid rgb(54, 177, 253);
   border-radius: 8px;
   align-self: center;
@@ -64,11 +55,10 @@ h1 {
   list-style: none;
 }
 
-.playerList ul{
+.playerList ul {
   padding-left: 0;
   margin: 0;
   list-style: none;
-
 }
 
 .dot {
@@ -78,16 +68,15 @@ h1 {
   display: inline-block;
   margin-right: 8px;
 }
-  .red{
-    background-color: red;
-  }
-  .blue {
-    background-color: blue;
-  }
-  .green{
-    background-color: green;
-  }
-  .yellow {
-    background-color: yellow;
-  }
-
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
+.green {
+  background-color: green;
+}
+.yellow {
+  background-color: yellow;
+}

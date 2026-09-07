@@ -1,5 +1,14 @@
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 40px);
-  grid-template-rows: repeat(3, 40px);
+.show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer {
+  align-self: flex-start;
+  margin: 5%;
+}
+
+.pictureToDraw h1 {
+  font-size: 30px;
 }
