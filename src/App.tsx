@@ -1,11 +1,12 @@
 import './App.css'
-import JoinScreen from './pages/JoinScreen'
+//import JoinScreen from './pages/JoinScreen'
+import ShowingScreen from './pages/ShowingScreen'
 
 function App() {
 
   return (
     <div>
-      <JoinScreen />
+      <ShowingScreen />
     </div>
   )
 }

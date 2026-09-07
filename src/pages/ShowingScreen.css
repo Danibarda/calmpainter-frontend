@@ -1,0 +1,14 @@
+.show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer {
+  align-self: flex-start;
+  margin: 5%;
+}
+
+.pictureToDraw h1 {
+  font-size: 30px;
+}
