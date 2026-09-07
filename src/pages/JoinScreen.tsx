@@ -2,7 +2,7 @@ import './JoinScreen.css'
 import PlayerList from '../components/PlayerList'
 import type { Player } from '../types/Player';
 
-
+// Test
 const testPlayers: Player[] = [
     { id: "1", name: "Dali", color: "RED"},
     { id: "2", name: "van Gogh", color: "BLUE"},
