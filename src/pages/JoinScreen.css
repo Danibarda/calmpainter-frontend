@@ -52,4 +52,11 @@
   border-radius: 7px;
   padding: 10px 70px;
   box-shadow: 1px 1px 5px rgb(17, 17, 17);
+  list-style: none;
+}
+
+.playerList ul{
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
 }
