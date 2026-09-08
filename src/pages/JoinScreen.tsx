@@ -1,34 +1,43 @@
 import './JoinScreen.css'
 import PlayerList from '../components/PlayerList'
 import type { Player } from '../types/Player';
+import JoinForm from '../components/JoinForm'
+
 
 
 const testPlayers: Player[] = [
-    { id: "1", name: "Dali", color: "RED"},
-    { id: "2", name: "van Gogh", color: "BLUE"},
-    { id: "3", name: "Monet", color: "GREEN"},
-    { id: "4", name: "Picasso", color: "YELLOW"},
+    { id: "1", name: "Dali", color: "RED" },
+    { id: "2", name: "van Gogh", color: "BLUE" },
+    { id: "3", name: "Monet", color: "GREEN" },
+    { id: "4", name: "Picasso", color: "YELLOW" },
 ];
 
+
 function JoinScreen() {
+
+    function handleJoin(username: string) {
+        console.log("Player joined: ", username);
+
+    }
+
+
     return (
         <div className="container">
 
             <h1>Calm Painter</h1>
 
             <div className="userInput">
-                <label>Username:</label>
-                <input type="text" placeholder="..."></input>
-                <button>Join Game</button>
+                <JoinForm onJoin={handleJoin} />
             </div>
 
             <div className="players">
                 <div className="playerList">
                     <label>Players: 4/4</label>
-                 <PlayerList players={testPlayers}/>
+                    <PlayerList players={testPlayers} />
                 </div>
                 <button>Start Game</button>
             </div>
+
         </div>
     )
 }
