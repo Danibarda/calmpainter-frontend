@@ -4,6 +4,8 @@ import Timer from '../components/Timer';
 import '../components/Timer.css'
 import type { Player } from '../types/Player';
 import PlayerList from '../components/PlayerList';
+import GameGrid from '../components/GameGrid';
+import type { Grid } from '../types/Grid';
 
 // Test
 const testPlayers: Player[] = [
@@ -12,6 +14,31 @@ const testPlayers: Player[] = [
     { id: "3", name: "Monet", color: "GREEN" },
     { id: "4", name: "Picasso", color: "YELLOW" },
 ];
+
+const HEART_PATTERN = [
+    "....X.....X....",
+    "...XX.....XX...",
+    "..XXXX...XXXX..",
+    ".XXXXXX.XXXXXX.",
+    "XXXXXXXXXXXXXXX",
+    "XXXXXXXXXXXXXXX",
+    "XXXXXXXXXXXXXXX",
+    ".XXXXXXXXXXXXX.",
+    ".XXXXXXXXXXXXX.",
+    "..XXXXXXXXXXX..",
+    "...XXXXXXXXX...",
+    "....XXXXXXX....",
+    ".....XXXXX.....",
+    "......XXX......",
+    ".......X.......",
+];
+
+// Test
+const testTargetGrid: Grid = {
+    cells: HEART_PATTERN.map(row =>
+        row.split("").map(char => (char === "X" ? "RED" : null))
+    ),
+};
 
 
 function ShowingScreen() {
@@ -37,7 +64,7 @@ function ShowingScreen() {
             <div className="pictureToDraw">
                 <h1>Picture to Draw</h1>
                 <div className="pictureGrid">
-
+                    <GameGrid grid={testTargetGrid} />
                 </div>
             </div>
             <div className="playerBar">

@@ -11,4 +11,11 @@
 
 .drawing h1 {
   font-size: 30px;
+  justify-self: center;
+}
+
+.doneBtn {
+  display: flex;
+  margin-top: 10px;
+  justify-self: center;
 }
