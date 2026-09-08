@@ -2,6 +2,18 @@
   width: 100%;
 }
 
+.container {
+  background-color: turquoise;
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 16px;
+  gap: 40px;
+  height: 90vh;
+  font-size: 25px;
+  box-shadow: 1px 1px 5px rgb(17, 17, 17);
+}
+
 body {
   background-image: url("./assets/background1.png");
   background-size: cover;
@@ -29,4 +41,16 @@ button:hover {
   transform: scale(1.1);
   cursor: pointer;
   background-color: rgb(58, 189, 41);
+}
+
+.playerBar ul {
+  display: flex;
+  gap: 16px;
+  font-size: 15px;
+}
+
+.playerBar {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 1%;
 }

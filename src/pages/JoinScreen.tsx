@@ -4,7 +4,7 @@ import type { Player } from '../types/Player';
 import JoinForm from '../components/JoinForm'
 
 
-
+// Test
 const testPlayers: Player[] = [
     { id: "1", name: "Dali", color: "RED" },
     { id: "2", name: "van Gogh", color: "BLUE" },
@@ -22,7 +22,7 @@ function JoinScreen() {
 
 
     return (
-        <div className="container">
+        <div className="container join">
 
             <h1>Calm Painter</h1>
 
