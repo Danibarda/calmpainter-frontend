@@ -1,16 +1,16 @@
 .cell {
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    border: 1px solid #333;
-    border-radius: 0;
-    box-shadow: none;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid #333;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .cell:hover {
-    transform: none;
+  transform: none;
 }
 
 .game-grid {
-    width: fit-content;
+  width: fit-content;
 }

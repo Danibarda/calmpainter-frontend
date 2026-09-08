@@ -5,7 +5,7 @@ import "./GameGrid.css";
 
 interface GameGridProps {
     grid: Grid;
-    onCellClick: (row: number, col: number) => void;
+    onCellClick?: (row: number, col: number) => void;
 }
 
 // Renders the shared grid as a 15x15 grid of cells
