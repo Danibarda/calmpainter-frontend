@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 interface JoinFormProps {
     onJoin: (username: string) => void;
 }
@@ -23,7 +22,7 @@ function JoinForm({ onJoin }: JoinFormProps) {
                 e.preventDefault();
                 handleJoin();
             }}>
-            <label>Username: </label>
+            <label>Enter Username: </label>
             <input placeholder="..." type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
             <button type="submit">Join Game</button>
             </form>
