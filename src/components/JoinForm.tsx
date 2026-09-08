@@ -9,7 +9,10 @@ function JoinForm({ onJoin }: JoinFormProps) {
     const [username, setUsername] = useState("")
 
     function handleJoin() {
-        onJoin(username);
+        const trimmedUsername = username.trim();
+        if (!trimmedUsername) return;
+
+        onJoin(trimmedUsername);
         setUsername("");
     }
 
