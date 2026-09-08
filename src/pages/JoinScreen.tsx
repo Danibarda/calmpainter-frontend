@@ -2,6 +2,8 @@ import './JoinScreen.css'
 import PlayerList from '../components/PlayerList'
 import type { Player } from '../types/Player';
 import JoinForm from '../components/JoinForm'
+import { useState } from 'react';
+import { COLORS } from '../types/Color';
 
 
 
@@ -15,10 +17,28 @@ const testPlayers: Player[] = [
 
 function JoinScreen() {
 
-    function handleJoin(username: string) {
-        console.log("Player joined: ", username);
+    const [players, setPlayers] = useState<Player[]>([]);
 
+    function handleJoin(username: string) {
+        if(players.length >= 4) {
+            alert("Lobby is full!")
+            return
+        }
+
+        if (username.trim() === "") {
+            alert("Please enter a username!")
+            return
+        }
+        const newPlayer: Player = {
+            id: String(players.length + 1),
+            name: username,
+            color: COLORS [players.length]
+        }
+        
+        console.log("Player joined: ", username);
+        setPlayers([...players, newPlayer]);
     }
+
 
 
     return (
@@ -28,12 +48,13 @@ function JoinScreen() {
 
             <div className="userInput">
                 <JoinForm onJoin={handleJoin} />
+                
             </div>
 
             <div className="players">
                 <div className="playerList">
-                    <label>Players: 4/4</label>
-                    <PlayerList players={testPlayers} />
+                    <label>Players: {players.length}/4</label>
+                    <PlayerList players={players} />
                 </div>
                 <button>Start Game</button>
             </div>
