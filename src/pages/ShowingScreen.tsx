@@ -40,7 +40,6 @@ const testTargetGrid: Grid = {
     ),
 };
 
-
 function ShowingScreen() {
 
     const [secondsLeft, setSecondsLeft] = useState(10);

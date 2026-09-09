@@ -9,7 +9,10 @@ function JoinForm({ onJoin }: JoinFormProps) {
 
     function handleJoin() {
         const trimmedUsername = username.trim();
-        if (!trimmedUsername) return;
+        if (!trimmedUsername) {
+            alert("Please enter a username!")
+            return
+        }
 
         onJoin(trimmedUsername);
         setUsername("");

@@ -27,6 +27,8 @@ function DrawingScreen() {
         cells: Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(null))
     })
 
+    /* Creates an object that contains a new updated 2-dimensional array with the user color in the cell that the user
+    clicked and updates grid with the setGrid method to give it a new state value. */
     function handleCellClick(row: number, col: number) {
         setGrid(prevGrid => {
             const newCells = prevGrid.cells.map((rowCells, r) => {

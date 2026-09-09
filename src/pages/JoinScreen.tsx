@@ -5,16 +5,6 @@ import JoinForm from '../components/JoinForm'
 import { useState } from 'react';
 import { COLORS } from '../types/Color';
 
-
-// Test
-const testPlayers: Player[] = [
-    { id: "1", name: "Dali", color: "RED" },
-    { id: "2", name: "van Gogh", color: "BLUE" },
-    { id: "3", name: "Monet", color: "GREEN" },
-    { id: "4", name: "Picasso", color: "YELLOW" },
-];
-
-
 function JoinScreen() {
 
     const [players, setPlayers] = useState<Player[]>([]);
@@ -25,10 +15,6 @@ function JoinScreen() {
             return
         }
 
-        if (username.trim() === "") {
-            alert("Please enter a username!")
-            return
-        }
         const newPlayer: Player = {
             id: String(players.length + 1),
             name: username,
@@ -38,8 +24,6 @@ function JoinScreen() {
         console.log("Player joined: ", username);
         setPlayers([...players, newPlayer]);
     }
-
-
 
     return (
         <div className="container join">
