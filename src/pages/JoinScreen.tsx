@@ -2,28 +2,27 @@ import './JoinScreen.css'
 import PlayerList from '../components/PlayerList'
 import type { Player } from '../types/Player';
 import JoinForm from '../components/JoinForm'
-import { useState } from 'react';
-import { COLORS } from '../types/Color';
+import { useEffect, useState } from 'react';
+import type { Game } from '../types/Game';
 
 function JoinScreen() {
 
     const [players, setPlayers] = useState<Player[]>([]);
+    const [gameId, setGameId] = useState<string | null>(null);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/games", { method: "POST" })
+            .then(response => response.json())
+            .then((game: Game) => setGameId(game.id));
+    }, [])
 
     function handleJoin(username: string) {
-        if(players.length >= 4) {
-            alert("Lobby is full!")
-            return
-        }
+        if (!gameId) return;
 
-        const newPlayer: Player = {
-            id: String(players.length + 1),
-            name: username,
-            color: COLORS [players.length]
+        fetch(`http://localhost:8080/games/${gameId}/players?playerName=${username}`, { method: "POST" })
+            .then(response => response.json())
+            .then((game: Game) => setPlayers(game.players))
         }
-        
-        console.log("Player joined: ", username);
-        setPlayers([...players, newPlayer]);
-    }
 
     return (
         <div className="container join">
