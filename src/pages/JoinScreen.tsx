@@ -2,28 +2,49 @@ import './JoinScreen.css'
 import PlayerList from '../components/PlayerList'
 import type { Player } from '../types/Player';
 import JoinForm from '../components/JoinForm'
-import { useState } from 'react';
-import { COLORS } from '../types/Color';
+import { useEffect, useState } from 'react';
+import type { Game } from '../types/Game';
+import { Client } from '@stomp/stompjs';
+import SockJS from 'sockjs-client';
 
 function JoinScreen() {
 
     const [players, setPlayers] = useState<Player[]>([]);
+    const [gameId, setGameId] = useState<string | null>(null);
+    
+    useEffect(() => {
+        fetch("http://localhost:8080/games/current")
+        .then(response => response.json())
+        .then((game: Game) => setGameId(game.id));
+    }, [])
+    
+    useEffect(() => {
+        if (!gameId) return;
+        const client = new Client({
+            webSocketFactory: () => new SockJS("http://localhost:8080/websocket"),
+            onConnect: () => {
+                client.subscribe(`/topic/games/${gameId}`, (message) => {
+                    const game: Game = JSON.parse(message.body);
+                    setPlayers(game.players);
+                })
+            }
+        });
+
+        client.activate();
+    
+        return () => {
+            client.deactivate();
+        }
+
+    }, [gameId]);
 
     function handleJoin(username: string) {
-        if(players.length >= 4) {
-            alert("Lobby is full!")
-            return
-        }
+        if (!gameId) return;
 
-        const newPlayer: Player = {
-            id: String(players.length + 1),
-            name: username,
-            color: COLORS [players.length]
+        fetch(`http://localhost:8080/games/${gameId}/players?playerName=${username}`, { method: "POST" })
+            .then(response => response.json())
+            .then((game: Game) => setPlayers(game.players))
         }
-        
-        console.log("Player joined: ", username);
-        setPlayers([...players, newPlayer]);
-    }
 
     return (
         <div className="container join">
