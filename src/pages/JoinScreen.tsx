@@ -6,13 +6,17 @@ import type { Player } from '../types/Player';
 interface JoinScreenProps {
     gameId: string | null;
     players: Player[];
+    onJoined: (player: Player) => void;
 }
 
-function JoinScreen({ gameId, players }: JoinScreenProps) {
+function JoinScreen({ gameId, players, onJoined }: JoinScreenProps) {
 
     function handleJoin(username: string) {
         if (!gameId) return;
-        fetch(`http://localhost:8080/games/${gameId}/players?playerName=${username}`, { method: "POST" })     
+
+        fetch(`http://localhost:8080/games/${gameId}/players?playerName=${username}`, { method: "POST" })  
+        .then((response) => response.json())
+        .then((player: Player) => onJoined(player))
         }
 
     return (
