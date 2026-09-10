@@ -6,10 +6,12 @@ import { useEffect, useState } from 'react';
 import type { Game } from './types/Game';
 import { Client } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
+import type { Player } from './types/Player';
 
 function App() {
 
   const [game, setGame] = useState<Game | null>(null);
+  const [me, setMe] = useState<Player | null>(null);
 
   useEffect(() => {
     fetch("http://localhost:8080/games/current")
@@ -41,7 +43,7 @@ function App() {
   return (
     <div>
       {game?.state === "WAITING" && (
-        <JoinScreen gameId={game?.id ?? null} players={game?.players ?? []} />
+        <JoinScreen gameId={game?.id ?? null} players={game?.players ?? []} onJoined={setMe} />
       )}
       {game?.state === "PICTUREVIEW" &&  <ShowingScreen game={game} />}
       {game?.state === "PLAYING" && <DrawingScreen />}
