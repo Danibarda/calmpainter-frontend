@@ -43,7 +43,7 @@ function App() {
       {game?.state === "WAITING" && (
         <JoinScreen gameId={game?.id ?? null} players={game?.players ?? []} />
       )}
-      {game?.state === "PICTUREVIEW" && <ShowingScreen />}
+      {game?.state === "PICTUREVIEW" &&  <ShowingScreen game={game} />}
       {game?.state === "PLAYING" && <DrawingScreen />}
     </div>
   )
