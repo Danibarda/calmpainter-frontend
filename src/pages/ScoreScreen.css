@@ -1,0 +1,73 @@
+.paintingsContainer {
+  display: flex;
+  gap: 10%;
+  padding-top: 10%;
+  justify-content: center;
+}
+
+.paintingsContainer .cell {
+  width: 15px;
+  height: 15px;
+}
+
+.paintingsContainer label {
+  display: flex;
+  justify-self: center;
+  margin-bottom: 10%;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.showScore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 60px;
+  margin: 10%;
+}
+
+.btnContainer {
+  display: flex;
+  justify-self: center;
+  padding-top: 2%;
+  gap: 50px;
+}
+
+.btnContainer button {
+  color: rgb(231, 227, 227);
+  padding: 5px 20px;
+  border-radius: 15px;
+}
+
+.playBtn {
+  background-color: rgb(111, 0, 175);
+  border-color: rgb(69, 1, 109);
+}
+
+.playBtn:hover {
+  background-color: rgb(97, 1, 153);
+}
+
+.leaderBtn {
+  background-color: red;
+  border-color: rgb(177, 0, 0);
+}
+
+.leaderBtn:hover {
+  background-color: rgb(219, 0, 0);
+}
+
+.scoreEmoji {
+  display: inline-block;
+  transform: rotate(-5deg);
+}
+
+.timeEmoji {
+  display: inline-block;
+  transform: rotate(12deg);
+}
+
+.showScore span {
+  filter: drop-shadow(3px 0 0 white) drop-shadow(-3px 0 0 white)
+    drop-shadow(0 3px 0 rgb(219, 219, 219)) drop-shadow(0 -3px 0 white);
+}

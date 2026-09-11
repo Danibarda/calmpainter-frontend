@@ -6,10 +6,10 @@
 
 .showTimer {
   align-self: flex-start;
-  margin: 5%;
+  margin: 5% 0 0 5%;
 }
 
 .pictureToDraw h1 {
-  font-size: 30px;
+  font-size: 40px;
   justify-self: center;
 }

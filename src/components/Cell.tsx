@@ -1,5 +1,5 @@
 import type { Color } from "../types/Color";
-import {COLOR_MAP } from "../constants/game";
+import { COLOR_MAP } from "../constants/game";
 
 interface CellProps {
     color: Color | null;
@@ -11,7 +11,7 @@ interface CellProps {
 // One square of the grid. It only show its color and report clicks.
 function Cell({ color, row, col, onClick }: CellProps) {
     // Empty cell (null) is show in gray
-    const backgroundColor = color ? COLOR_MAP[color] : "lightgray";
+    const backgroundColor = color ? COLOR_MAP[color] : "white";
 
     return (
         <button
@@ -19,7 +19,7 @@ function Cell({ color, row, col, onClick }: CellProps) {
             style={{ backgroundColor }}
             onClick={onClick ? () => onClick(row, col) : undefined}
             disabled={!onClick}
-            />
+        />
     );
 }
 

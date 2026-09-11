@@ -2,8 +2,8 @@
   width: 30px;
   height: 30px;
   padding: 0;
-  border: 1px solid #333;
-  border-radius: 0;
+  border: 1px solid #c7c7c7;
+  border-radius: 0px;
   box-shadow: none;
 }
 
@@ -13,4 +13,6 @@
 
 .game-grid {
   width: fit-content;
+  border: solid 4px white;
+  border-radius: 5px;
 }

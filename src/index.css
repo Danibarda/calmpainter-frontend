@@ -3,11 +3,12 @@
 }
 
 .container {
-  background-color: turquoise;
+  background-color: rgb(50, 216, 199);
   width: 90%;
   max-width: 800px;
   margin: 0 auto;
-  border-radius: 16px;
+  border-radius: 3px;
+  border: 1px solid rgb(38, 177, 163);
   gap: 40px;
   height: 90vh;
   font-size: 25px;
@@ -29,24 +30,25 @@ body {
 button {
   width: fit-content;
   border-radius: 10px;
-  border: 3px solid rgb(48, 138, 48);
+  border: 3px solid rgb(84, 202, 84);
   padding: 3px 8px;
-  background-color: rgb(67, 204, 49);
+  background-color: rgb(139, 214, 133);
   font-size: 19px;
   transition: transform 0.2s ease;
   box-shadow: 1px 1px 5px rgb(17, 17, 17);
+  font-family: "Fredoka", sans-serif;
 }
 
 button:hover {
   transform: scale(1.1);
   cursor: pointer;
-  background-color: rgb(58, 189, 41);
+  background-color: rgb(117, 231, 102);
 }
 
 .playerBar ul {
   display: flex;
   gap: 16px;
-  font-size: 15px;
+  font-size: 25px;
 }
 
 .playerBar {
