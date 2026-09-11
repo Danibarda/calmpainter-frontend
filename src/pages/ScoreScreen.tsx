@@ -6,9 +6,10 @@ import './ScoreScreen.css';
 interface ScoreScreenProps {
     game: Game;
     result: Result;
+    onPlayAgain: () => void;
 }
 
-function ScoreScreen({ game, result }: ScoreScreenProps) {
+function ScoreScreen({ game, result, onPlayAgain }: ScoreScreenProps) {
     return (
         <div className="container score">
             <div className="paintingsContainer">
@@ -30,7 +31,7 @@ function ScoreScreen({ game, result }: ScoreScreenProps) {
                 <label>Time: {result.time} seconds <span className="timeEmoji">⏰</span></label>
             </div>
             <div className="btnContainer">
-                <button className="playBtn">Play Again</button>
+                <button className="playBtn" onClick={onPlayAgain}>Play Again</button>
                 <button className="leaderBtn">Leader Board</button>
             </div>
         </div>
