@@ -22,6 +22,11 @@ function DrawingScreen({ me, game }: DrawingScreenProps) {
         })
     }
 
+    // Ends the game for everyone.
+    function handleDone() {
+        fetch(`${API_URL}/games/${game.id}/done`, { method: "POST" })
+    }
+
     useEffect(() => {
         if (secondsLeft === 0) return;
         const timeout = setTimeout(() => {
@@ -41,7 +46,7 @@ function DrawingScreen({ me, game }: DrawingScreenProps) {
                 <div className="drawGrid">
                     <GameGrid onCellClick={handleCellClick} grid={game.grid} />
                 </div>
-                <button className="doneBtn">DONE !</button>
+                <button className="doneBtn" onClick={handleDone}>DONE !</button>
             </div>
             <div className="playerBar">
                 <PlayerList players={game.players} />
