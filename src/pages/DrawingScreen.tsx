@@ -5,6 +5,7 @@ import type { Player } from '../types/Player';
 import './DrawingScreen.css'
 import { useState, useEffect } from 'react';
 import type { Game } from '../types/Game';
+import { API_URL } from '../constants/api';
 
 interface DrawingScreenProps {
     game: Game;
@@ -16,7 +17,7 @@ function DrawingScreen({ me, game }: DrawingScreenProps) {
     const [secondsLeft, setSecondsLeft] = useState(60);
 
     function handleCellClick(row: number, col: number) {
-        fetch(`http://localhost:8080/games/${game.id}/paint?playerId=${me.id}&row=${row}&column=${col}`, {
+        fetch(`${API_URL}/games/${game.id}/paint?playerId=${me.id}&row=${row}&column=${col}`, {
             method: "POST"
         })
     }
