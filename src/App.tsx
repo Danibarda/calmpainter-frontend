@@ -46,7 +46,7 @@ function App() {
         <JoinScreen gameId={game?.id ?? null} players={game?.players ?? []} onJoined={setMe} />
       )}
       {game?.state === "PICTUREVIEW" &&  <ShowingScreen game={game} />}
-      {game?.state === "PLAYING" && <DrawingScreen />}
+      {game?.state === "PLAYING" && <DrawingScreen me={me} players={game?.players ?? []}/>}
     </div>
   )
 }
