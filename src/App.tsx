@@ -9,6 +9,7 @@ import SockJS from 'sockjs-client';
 import type { Player } from './types/Player';
 import ScoreScreen from './pages/ScoreScreen';
 import type { Result } from './types/Result';
+import { API_URL } from './constants/api';
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
   const [result, setResult] = useState<Result |null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/games/current")
+    fetch(`${API_URL}/games/current`)
       .then(response => response.json())
       .then((game: Game) => setGame(game));
   }, []);
@@ -27,7 +28,7 @@ function App() {
     if (!game?.id) return;
 
     const client = new Client({
-      webSocketFactory: () => new SockJS("http://localhost:8080/websocket"),
+      webSocketFactory: () => new SockJS(`${API_URL}/websocket`),
       onConnect: () => {
         client.subscribe(`/topic/games/${game.id}`, (message) => {
           const updatedGame: Game = JSON.parse(message.body);

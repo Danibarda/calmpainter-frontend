@@ -2,6 +2,7 @@ import './JoinScreen.css'
 import PlayerList from '../components/PlayerList'
 import JoinForm from '../components/JoinForm'
 import type { Player } from '../types/Player';
+import { API_URL } from '../constants/api';
 
 interface JoinScreenProps {
     gameId: string | null;
@@ -14,7 +15,7 @@ function JoinScreen({ gameId, players, onJoined }: JoinScreenProps) {
     function handleJoin(username: string) {
         if (!gameId) return;
 
-        fetch(`http://localhost:8080/games/${gameId}/players?playerName=${username}`, { method: "POST" })
+        fetch(`${API_URL}/games/${gameId}/players?playerName=${username}`, { method: "POST" })
             .then((response) => response.json())
             .then((player: Player) => onJoined(player))
     }
