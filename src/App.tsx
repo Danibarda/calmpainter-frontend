@@ -34,7 +34,7 @@ function App() {
           const updatedGame: Game = JSON.parse(message.body);
           setGame(updatedGame);
         });
-        
+
         client.subscribe(`/topic/games/${game.id}/result`, (message) => {
           const result: Result = JSON.parse(message.body);
           setResult(result);
@@ -52,7 +52,7 @@ function App() {
   return (
     <div>
       {game?.state === "WAITING" && (
-        <JoinScreen gameId={game?.id ?? null} players={game?.players ?? []} onJoined={setMe} />
+        <JoinScreen gameId={game?.id ?? null} players={game?.players ?? []} me={me} onJoined={setMe} />
       )}
       {game?.state === "PICTUREVIEW" &&  <ShowingScreen game={game} />}
       {game?.state === "PLAYING" && me && <DrawingScreen game={game} me={me} />}
