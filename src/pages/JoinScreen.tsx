@@ -7,10 +7,11 @@ import { API_URL } from '../constants/api';
 interface JoinScreenProps {
     gameId: string | null;
     players: Player[];
+    me: Player | null;
     onJoined: (player: Player) => void;
 }
 
-function JoinScreen({ gameId, players, onJoined }: JoinScreenProps) {
+function JoinScreen({ gameId, players, me, onJoined }: JoinScreenProps) {
 
     function handleJoin(username: string) {
         if (!gameId) return;
@@ -26,7 +27,11 @@ function JoinScreen({ gameId, players, onJoined }: JoinScreenProps) {
             <h1>Calm Painter</h1>
 
             <div className="userInput">
-                <JoinForm onJoin={handleJoin} />
+                {me === null ? (
+                    <JoinForm onJoin={handleJoin} />
+                ) : (
+                    <p>Welcome, {me.name}! Waiting for players...</p>
+                )}
             </div>
 
             <div className="players">

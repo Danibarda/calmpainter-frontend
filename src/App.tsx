@@ -11,6 +11,18 @@ import ScoreScreen from './pages/ScoreScreen';
 import type { Result } from './types/Result';
 import { API_URL } from './constants/api';
 
+// Key used to remember this browser's player
+const STORAGE_KEY = "calmpainter.me";
+
+// returns the saved player if this browser already joined this game, otherwise null
+function restoreMe(gameId: string): Player | null {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if(!saved) return null;
+
+  const data = JSON.parse(saved);
+  return data.gameId === gameId ? data.player : null;
+}
+
 function App() {
 
   const [game, setGame] = useState<Game | null>(null);
@@ -20,8 +32,11 @@ function App() {
   useEffect(() => {
     fetch(`${API_URL}/games/current`)
       .then(response => response.json())
-      .then((game: Game) => setGame(game));
-  }, []);
+      .then((game: Game) => {
+        setGame(game);
+        setMe(restoreMe(game.id));
+      });
+    }, []);
 
   /* Creates a STOMP client and configures it with a SockJS connection to our backend. */
   useEffect(() => {
@@ -34,7 +49,7 @@ function App() {
           const updatedGame: Game = JSON.parse(message.body);
           setGame(updatedGame);
         });
-        
+
         client.subscribe(`/topic/games/${game.id}/result`, (message) => {
           const result: Result = JSON.parse(message.body);
           setResult(result);
@@ -49,10 +64,16 @@ function App() {
     };
   }, [game?.id]);
 
+  //save the player so other tabs of this browser can't join again
+  function handleJoined(player: Player) {
+    setMe(player);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ gameId: game?.id, player }));
+  }
+
   return (
     <div>
       {game?.state === "WAITING" && (
-        <JoinScreen gameId={game?.id ?? null} players={game?.players ?? []} onJoined={setMe} />
+        <JoinScreen gameId={game?.id ?? null} players={game?.players ?? []} me={me} onJoined={handleJoined} />
       )}
       {game?.state === "PICTUREVIEW" &&  <ShowingScreen game={game} />}
       {game?.state === "PLAYING" && me && <DrawingScreen game={game} me={me} />}
