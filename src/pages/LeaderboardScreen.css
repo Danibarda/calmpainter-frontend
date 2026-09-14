@@ -1,0 +1,18 @@
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.resultList {
+    font-size: 30px;
+    list-style: decimal;
+    padding-left: 40px;
+}
+
+.resultList li {
+    display: flex;
+    gap: 40px;
+    padding: 5px 0;
+}

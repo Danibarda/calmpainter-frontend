@@ -10,6 +10,7 @@ import type { Player } from './types/Player';
 import ScoreScreen from './pages/ScoreScreen';
 import type { Result } from './types/Result';
 import { API_URL } from './constants/api';
+import LeaderboardScreen from './pages/LeaderboardScreen';
 
 // Key used to remember this browser's player
 const STORAGE_KEY = "calmpainter.me";
@@ -28,6 +29,7 @@ function App() {
   const [game, setGame] = useState<Game | null>(null);
   const [me, setMe] = useState<Player | null>(null);
   const [result, setResult] = useState<Result |null>(null);
+  const [showLeaderboard, setShowLeaderboard] = useState(true);
 
   // Load the open game and restores the players
   function loadCurrentGame() {
@@ -79,16 +81,26 @@ function App() {
   function handlePlayAgain() {
     setResult(null);
     loadCurrentGame();
+    setShowLeaderboard(false);
   }
 
   return (
     <div>
-      {game?.state === "WAITING" && (
-        <JoinScreen gameId={game?.id ?? null} players={game?.players ?? []} me={me} onJoined={handleJoined} />
+      {showLeaderboard && (
+        <LeaderboardScreen onBack={() => setShowLeaderboard(false)} />
       )}
-      {game?.state === "PICTUREVIEW" &&  <ShowingScreen game={game} />}
-      {game?.state === "PLAYING" && me && <DrawingScreen game={game} me={me} />}
-      {game?.state === "FINISHED" && result && <ScoreScreen game={game} result={result} onPlayAgain={handlePlayAgain}/> }
+      {!showLeaderboard && game?.state === "WAITING" && (
+        <JoinScreen gameId={game?.id ?? null} players={game?.players ?? []} me={me} onJoined={handleJoined} />)}
+      {!showLeaderboard && game?.state === "PICTUREVIEW" &&  <ShowingScreen game={game} />}
+      {!showLeaderboard && game?.state === "PLAYING" && me && <DrawingScreen game={game} me={me} />}
+      {!showLeaderboard && game?.state === "FINISHED" && result && (
+        <ScoreScreen
+          game={game}
+          result={result}
+          onPlayAgain={handlePlayAgain}
+          onShowLeaderboard={() => setShowLeaderboard(true)}
+        />
+      )}
     </div>
   )
 }
