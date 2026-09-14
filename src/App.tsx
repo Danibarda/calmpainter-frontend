@@ -86,8 +86,9 @@ function App() {
 
   return (
     <div>
-      {showLeaderboard && (
-        <LeaderboardScreen onBack={() => setShowLeaderboard(false)} />
+      {showLeaderboard && game && result && (
+        <LeaderboardScreen 
+        game={game} result={result} onBack={() => setShowLeaderboard(false)} />
       )}
       {!showLeaderboard && game?.state === "WAITING" && (
         <JoinScreen gameId={game?.id ?? null} players={game?.players ?? []} me={me} onJoined={handleJoined} />)}
