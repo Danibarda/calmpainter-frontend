@@ -7,6 +7,8 @@
 
 .resultList {
     font-size: 30px;
+    list-style: decimal;
+    padding-left: 40px;
 }
 
 .resultList li {

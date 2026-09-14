@@ -7,9 +7,10 @@ interface ScoreScreenProps {
     game: Game;
     result: Result;
     onPlayAgain: () => void;
+    onShowLeaderboard: () => void;
 }
 
-function ScoreScreen({ game, result, onPlayAgain }: ScoreScreenProps) {
+function ScoreScreen({ game, result, onPlayAgain, onShowLeaderboard }: ScoreScreenProps) {
     return (
         <div className="container score">
             <div className="paintingsContainer">
@@ -32,7 +33,7 @@ function ScoreScreen({ game, result, onPlayAgain }: ScoreScreenProps) {
             </div>
             <div className="btnContainer">
                 <button className="playBtn" onClick={onPlayAgain}>Play Again</button>
-                <button className="leaderBtn">Leader Board</button>
+                <button className="leaderBtn" onClick={onShowLeaderboard}>Leader Board</button>
             </div>
         </div>
     )
