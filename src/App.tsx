@@ -29,7 +29,7 @@ function App() {
   const [game, setGame] = useState<Game | null>(null);
   const [me, setMe] = useState<Player | null>(null);
   const [result, setResult] = useState<Result |null>(null);
-  const [showLeaderboard, setShowLeaderboard] = useState(true);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
 
   // Load the open game and restores the players
   function loadCurrentGame() {
