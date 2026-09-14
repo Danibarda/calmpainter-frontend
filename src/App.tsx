@@ -29,14 +29,19 @@ function App() {
   const [me, setMe] = useState<Player | null>(null);
   const [result, setResult] = useState<Result |null>(null);
 
-  useEffect(() => {
+  // Load the open game and restores the players
+  function loadCurrentGame() {
     fetch(`${API_URL}/games/current`)
       .then(response => response.json())
       .then((game: Game) => {
         setGame(game);
         setMe(restoreMe(game.id));
       });
-    }, []);
+  }
+
+  useEffect(() => {
+    loadCurrentGame();
+  }, []);
 
   /* Creates a STOMP client and configures it with a SockJS connection to our backend. */
   useEffect(() => {
@@ -70,6 +75,12 @@ function App() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ gameId: game?.id, player }));
   }
 
+  //Back to the lobby after a finished game
+  function handlePlayAgain() {
+    setResult(null);
+    loadCurrentGame();
+  }
+
   return (
     <div>
       {game?.state === "WAITING" && (
@@ -77,7 +88,7 @@ function App() {
       )}
       {game?.state === "PICTUREVIEW" &&  <ShowingScreen game={game} />}
       {game?.state === "PLAYING" && me && <DrawingScreen game={game} me={me} />}
-      {game?.state === "FINISHED" && result && <ScoreScreen game={game} result={result}/> }
+      {game?.state === "FINISHED" && result && <ScoreScreen game={game} result={result} onPlayAgain={handlePlayAgain}/> }
     </div>
   )
 }
