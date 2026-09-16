@@ -26,7 +26,7 @@ function JoinForm({ onJoin }: JoinFormProps) {
                 handleJoin();
             }}>
             <label>Enter Username: </label>
-            <input placeholder="..." type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
+            <input placeholder="Max 8 characters" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
             <button type="submit">Join Game</button>
             </form>
         </div>

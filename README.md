@@ -1,75 +1,55 @@
-# React + TypeScript + Vite
+# Calmpainter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🎨 **Live demo:** [calmpainter-frontend-e3f6o.ondigitalocean.app](https://calmpainter-frontend-e3f6o.ondigitalocean.app/)
 
-Currently, two official plugins are available:
+Calmpainter is a small multiplayer drawing game that welcomes players from all ages to encourage creativity. It is especially designed for kids developement using their imagination without the pressure of competitiveness. Players join a game, look at a
+target painting, then try to recreate it on a pixel grid before time runs out.
+Everyone's progress updates live, and at the end everyone gets scored and can check the leaderboard afterwards.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## How it works
 
-## React Compiler
+1. **Join** – open the app, enter a name, and join the current game.
+2. **View** – a target painting is shown for everyone to memorize.
+3. **Paint** – recreate the painting on your own grid before the timer ends.
+4. **Score** – see how close your painting was, then check the leaderboard.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The frontend talks to a backend over two channels:
 
-## Expanding the ESLint configuration
+- **REST** – to fetch the current game (`GET /games/current`).
+- **WebSocket (STOMP over SockJS)** – to receive live updates as the game and
+  results change.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React 19 + TypeScript
+- Vite
+- `@stomp/stompjs` + `sockjs-client` for real-time updates
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Getting started locally
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Install dependencies:
 
-```
+   ```bash
+   npm install
+   ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+2. Set the backend URL. Copy `.env.example` to `.env` and point it at your
+   backend:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   ```bash
+   cp .env.example .env
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+   ```
+   VITE_API_URL=http://localhost:8080
+   ```
 
-```
+3. Start the dev server:
+
+   ```bash
+   npm run dev
+   ```
+
+The app will be available at the URL Vite prints in the terminal (usually
+`http://localhost:5173`). Make sure the backend is running at the URL set in
+`VITE_API_URL`.
