@@ -9,10 +9,9 @@ import PlayerList from "../components/PlayerList";
 interface LeaderboardScreenProps {
     onBack: () => void;
     game: Game;
-    result: Result;
 }
 
-function LeaderboardScreen({ game, result, onBack }: LeaderboardScreenProps) {
+function LeaderboardScreen({ game, onBack }: LeaderboardScreenProps) {
     const [results, setResults] = useState<Result[]>([]);
 
     // Load the results once when the screen opens.
